@@ -5,11 +5,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
     //Explicit
     private ManageTABLE objManageTABLE;
+    private EditText userEditText , passwordEditText;
+    private String userString  , passwordString;
 
 
     @Override
