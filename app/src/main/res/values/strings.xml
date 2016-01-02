@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Hey hey bread</string>
+    <string name="a1">กรุณากรอก"ไอดี"</string>
+    <string name="a2">กรุณากรอก"รหัสผ่าน"</string>
+    <string name="a3">กรุณากรอก"ชื่อ"</string>
+    <string name="a4">กรุณากรอก"นามสกุล"</string>
+    <string name="a5">กรุณากรอก"ที่อยู่"</string>
+    <string name="a6">กรุณากรอก"เบอร์โทรศัพท์"</string>
 </resources>
