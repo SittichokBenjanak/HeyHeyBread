@@ -22,10 +22,12 @@ public class MainActivity extends AppCompatActivity {
         //test Add Value
         testAddValue();
 
+
     }   // OnCreate
 
     private void testAddValue() {
         objManageTABLE.addNewUser("testUser", "testPass", "testName",
                 "testSurname", "testAddress", "testPhone", "testCom");
+        objManageTABLE.addNewBread("testBread", "testPrice", "testAmount", "testImage");
     }
 }   // Main class
