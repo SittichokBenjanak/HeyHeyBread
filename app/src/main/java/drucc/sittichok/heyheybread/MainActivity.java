@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
         //Connected Database
         objManageTABLE = new ManageTABLE(this);
 
+
+
         //test Add Value
         testAddValue();
 
