@@ -62,7 +62,7 @@ public class ManageTABLE {
         objContentValues.put(COLUMN_Item,strItem);
 
         return writeSqLiteDatabase.insert(TABLE_ORDER,null,objContentValues);
-    }
+    }   // addNewOrder
 
 
     public long addNewBread(String strBread,
@@ -76,7 +76,7 @@ public class ManageTABLE {
         objContentValues.put(COLUMN_Image,strImage);
 
         return writeSqLiteDatabase.insert(TABLE_BREAD,null,objContentValues);
-    }
+    }   // addNewBread
 
     public long addNewUser(String strUser,
                            String strPassword,
@@ -96,7 +96,7 @@ public class ManageTABLE {
 
         return writeSqLiteDatabase.insert(TABLE_USER,null,objContentValues);
 
-    }
+    }   // addNewUser
 
 
 
