@@ -52,7 +52,7 @@ public class ManageTABLE {
                 null,null,null,null,null);
         objCursor.moveToFirst();
         int intRecord = objCursor.getCount();
-        resultStrings = new String[intColumn];
+        resultStrings = new String[intRecord];
         for (int i=0; i<intRecord; i++) {
             switch (intColumn) {
                 case 1:
@@ -69,7 +69,11 @@ public class ManageTABLE {
                     break;
 
             }   //switch
+
+            objCursor.moveToNext();
+
         }   //for
+        objCursor.close();
 
         return resultStrings;
     }
