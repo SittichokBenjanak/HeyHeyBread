@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -48,8 +49,8 @@ public class showMenuActivity extends AppCompatActivity {
 
     private void ChooseItem(final String breadString, final String priceString) {
 
-        CharSequence[] mySequences = {"1 ชิ้น" ,"2 ชิ้น" ,"3 ชิ้น" ,"4 ชิ้น" ,"5 ชิ้น" ,
-                "6 ชิ้น" ,"7 ชิ้น" ,"8 ชิ้น" ,"9 ชิ้น" ,"10 ชิ้น" ,};
+        CharSequence[] mySequences = {"1 ชิ้น", "2 ชิ้น", "3 ชิ้น", "4 ชิ้น", "5 ชิ้น",
+                "6 ชิ้น", "7 ชิ้น", "8 ชิ้น", "9 ชิ้น", "10 ชิ้น",};
         final int intItem = 0;
 
         AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
@@ -58,7 +59,7 @@ public class showMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 int intItem = i + 1;
-                UpdateOrderToSQLit(breadString, priceString,intItem);
+                UpdateOrderToSQLit(breadString, priceString, intItem);
 
                 dialogInterface.dismiss();
             }   // event
@@ -71,8 +72,35 @@ public class showMenuActivity extends AppCompatActivity {
 
     private void UpdateOrderToSQLit(String breadString, String priceString, int intItem) {
 
+        String strID = getIntent().getStringExtra("ID");
+        int intID = Integer.parseInt(strID);  //  parseInt(strID) ถ้าโยน อักษร 5 มา จะเป็น เลข 5
+        ManageTABLE objManageTABLE = new ManageTABLE(this);
+        String[] resultStrings = objManageTABLE.readAtPosition(intID);
+
+        addValueToSQLite(resultStrings[1],
+                resultStrings[2],
+                resultStrings[3],
+                resultStrings[4],
+                breadString,
+                priceString,
+                Integer.toString(intItem));
 
 
     }   //UpdateOrderToSQLit
+
+    private void addValueToSQLite(String strName, String strSurname,
+                                  String strAddress, String strPhone,
+                                  String strbread, String strPrice, String strItem) {
+
+        Log.d("hey", "Name " +strName);
+        Log.d("hey", "Surname " +strSurname);
+        Log.d("hey", "Address " +strAddress);
+        Log.d("hey", "Phone " +strPhone);
+        Log.d("hey", "Bread " +strbread);
+        Log.d("hey", "Price " +strPrice);
+        Log.d("hey", "Item " +strItem);
+
+    }   // addValueToSQLite
+
 
 }   // Main Class
