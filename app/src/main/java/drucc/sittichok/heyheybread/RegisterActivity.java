@@ -108,7 +108,15 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
 
             //No Space
-            confirmRegister();
+            if (checkUser()) {
+
+                MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+                objMyAlertDialog.errorDialog(RegisterActivity.this,"ไม่สามารถใช้ชื่อนี้ได้","กรุณาเปลี่ยน User ใหม่ มีใครอื่นใช้แล้ว");
+
+            } else {
+
+                confirmRegister();
+            }
         } // if
 
     }   //clickSave
