@@ -82,6 +82,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkUser() {
 
+        try {
+
+            String[] resultStrings = objManageTABLE.searchUser(userString);
+            if (passwordString.equals(resultStrings[2])) {
+
+                Intent objIntent = new Intent(MainActivity.this, HubActivity.class);
+                objIntent.putExtra("ID", resultStrings[0]);
+                startActivity(objIntent);
+
+            } else {
+                MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+                objMyAlertDialog.errorDialog(MainActivity.this,"รหัสผ่านผิด","กรุณากรอกรหัสใหม่");
+
+
+            }
+
+        } catch (Exception e) {
+            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+            objMyAlertDialog.errorDialog(MainActivity.this,"Userผิด","ไม่มี"+ userString + "ในฐานข้อมูล");
+        }
+
 
     }   // checkUser
 
