@@ -43,6 +43,8 @@ public class ManageTABLE {
 
     } //Constructor
 
+
+
     public long addNewOrder(String strName,
                             String strDate,
                             String strSurname,
@@ -52,6 +54,7 @@ public class ManageTABLE {
                             String strPrice,
                             String strItem) {
         ContentValues objContentValues = new ContentValues();
+        //ContentValues คือ obj ที่ใช้ในการเชื่อมต่อฐานข้อมูล มันคือตัวกลาง
         objContentValues.put(COLUMN_Name,strName);
         objContentValues.put(COLUMN_Date,strDate);
         objContentValues.put(COLUMN_Surname,strSurname);
@@ -70,6 +73,7 @@ public class ManageTABLE {
                             String strAmount,
                             String strImage) {
         ContentValues objContentValues = new ContentValues();
+        //ContentValues คือ obj ที่ใช้ในการเชื่อมต่อฐานข้อมูล มันคือตัวกลาง
         objContentValues.put(COLUMN_Bread,strBread);
         objContentValues.put(COLUMN_Price,strPrice);
         objContentValues.put(COLUMN_Amount,strAmount);
@@ -86,6 +90,7 @@ public class ManageTABLE {
                            String strPhone,
                            String strComplacency) {
         ContentValues objContentValues = new ContentValues();
+        //ContentValues คือ obj ที่ใช้ในการเชื่อมต่อฐานข้อมูล มันคือตัวกลาง
         objContentValues.put(COLUMN_User,strUser);
         objContentValues.put(COLUMN_Password,strPassword);
         objContentValues.put(COLUMN_Name,strName);

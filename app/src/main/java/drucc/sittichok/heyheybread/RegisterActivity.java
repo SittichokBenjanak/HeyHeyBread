@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void clickSave(View view) {
 
         //Check Space
-        userString = UserEditText.getText().toString().trim();
+        userString = UserEditText.getText().toString().trim(); //trim คือตัดช่องว่างทิ้ง
         passwordString = PasswordEditText.getText().toString().trim();
         nameString = NameEditText.getText().toString().trim();
         surnameString = SurnameEditText.getText().toString().trim();
@@ -54,10 +54,11 @@ public class RegisterActivity extends AppCompatActivity {
                 surnameString.equals("") ||
                 addressString.equals("") ||
                 phoneString.equals("")) {
+            // equals อีคั่ว เหมือนเท่ากับ i="" ใช้เพราะเป็น String
 
-            //Have Space
+            //Have Space  ถ้ามีช่องว่างให้ทำ
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
-            objMyAlertDialog.errorDialog(RegisterActivity.this, "มีช่องว่าง", "กรุณากรอกทุกช่อง");
+            objMyAlertDialog.errorDialog(RegisterActivity.this, "มีช่องว่าง", "กรุณากรอกให้ครบทุกช่อง");
 
         } else {
 
@@ -83,13 +84,13 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 upDateMySQL();
-                dialog.dismiss();
+                dialog.dismiss();  // dialog.dismiss ให้ dialog หายไป
             }
         });
         objBuilder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+                dialog.dismiss();  // dialog.dismiss ให้ dialog หายไป
             }
         });
 
