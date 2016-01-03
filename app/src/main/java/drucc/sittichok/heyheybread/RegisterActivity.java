@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String userString,passwordString, nameString,
     surnameString,addressString, phoneString;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +47,40 @@ public class RegisterActivity extends AppCompatActivity {
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
             objMyAlertDialog.errorDialog(RegisterActivity.this,"User ว่าง","กรุณากรอกที่ช่อง User ด้วย");
         } else {
+
+            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+            if (checkUser()) {
+                objMyAlertDialog.errorDialog(RegisterActivity.this, "ไม่สามารถใช้ชื่อนี้ได้","กรุณาเปลี่ยน User ใหม่ มีใครอื่นใช้แล้ว");
+
+            } else {
+
+                objMyAlertDialog.errorDialog(RegisterActivity.this,"สามารถใช้ชื่อนี้ได้","กรอกให้ครบทุกช่องแล้ว Save เลย ");
+
+            }
+
         }
 
     }   // clickCheck
 
+    private boolean checkUser() {
+
+        try {
+            // Have This User in my Database
+            ManageTABLE objManageTABLE = new ManageTABLE(this);
+            String[] resultStrings = objManageTABLE.searchUser(userString);
+            Log.d("hey", "Name ==> " + resultStrings[3]);
+
+
+            return true;
+        } catch (Exception e) {
+            //No This User in my Database
+            return false;
+        }
+
+
+        //return false;
+
+    }   // checkUser
 
 
     public void clickSave(View view) {

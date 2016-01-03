@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ManageTABLE objManageTABLE;
     private EditText userEditText , passwordEditText;
     private String userString  , passwordString;
-
+    public String TAG = "hey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             String strJSON = null;
             String strURLuser = "http://swiftcodingthai.com/mos/php_get_user_mos.php";
             String strURLbread = "http://swiftcodingthai.com/mos/php_get_bread_mos.php";
-            String TAG = "hey";
+
             HttpPost objHttpPost = null;
 
             //1. Create InputStream
