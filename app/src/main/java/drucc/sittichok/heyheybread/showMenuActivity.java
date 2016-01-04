@@ -51,7 +51,7 @@ public class showMenuActivity extends AppCompatActivity {
 
         CharSequence[] mySequences = {"1 ชิ้น", "2 ชิ้น", "3 ชิ้น", "4 ชิ้น", "5 ชิ้น",
                 "6 ชิ้น", "7 ชิ้น", "8 ชิ้น", "9 ชิ้น", "10 ชิ้น",};
-        final int intItem = 0;
+        //final int intItem = 0;
 
         AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
         objBuilder.setTitle(breadString);

@@ -61,7 +61,7 @@ public class ManageTABLE {
 
 
         return resultStrings;
-    }
+    }   //  readAtPosition
 
     public String[] readAllBread(int intColumn) {
 

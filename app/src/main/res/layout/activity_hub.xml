@@ -24,14 +24,14 @@
                 android:layout_width="@dimen/icon"
                 android:layout_height="@dimen/icon"
                 android:id="@+id/imageView2"
-                android:src="@drawable/blue"
+                android:src="@drawable/shopopen"
                 android:layout_weight="1" />
 
             <ImageView
                 android:layout_width="@dimen/icon"
                 android:layout_height="@dimen/icon"
                 android:id="@+id/imageView3"
-                android:src="@drawable/red"
+                android:src="@drawable/orderbread"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -76,14 +76,14 @@
                 android:layout_width="@dimen/icon"
                 android:layout_height="@dimen/icon"
                 android:id="@+id/imageView4"
-                android:src="@drawable/orange"
+                android:src="@drawable/edituser"
                 android:layout_weight="1" />
 
             <ImageView
                 android:layout_width="@dimen/icon"
                 android:layout_height="@dimen/icon"
                 android:id="@+id/imageView5"
-                android:src="@drawable/green"
+                android:src="@drawable/maphey"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -128,7 +128,7 @@
                 android:layout_width="@dimen/icon"
                 android:layout_height="@dimen/icon"
                 android:id="@+id/imageView6"
-                android:src="@drawable/gray"
+                android:src="@drawable/pamung"
                 android:layout_weight="1" />
 
         </LinearLayout>

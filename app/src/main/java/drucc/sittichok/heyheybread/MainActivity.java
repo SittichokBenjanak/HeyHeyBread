@@ -93,14 +93,14 @@ public class MainActivity extends AppCompatActivity {
 
             } else {
                 MyAlertDialog objMyAlertDialog = new MyAlertDialog();
-                objMyAlertDialog.errorDialog(MainActivity.this,"รหัสผ่านผิด","กรุณากรอกรหัสใหม่");
+                objMyAlertDialog.errorDialog(MainActivity.this,"Password false","กรุณากรอกรหัสใหม่");
 
 
             }
 
         } catch (Exception e) {
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
-            objMyAlertDialog.errorDialog(MainActivity.this,"Userผิด","ไม่มี"+ userString + "ในฐานข้อมูล");
+            objMyAlertDialog.errorDialog(MainActivity.this,"User false","ไม่มี "+ userString + " ในฐานข้อมูล");
         }
 
 
