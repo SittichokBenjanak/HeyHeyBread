@@ -2,6 +2,8 @@ package drucc.sittichok.heyheybread;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +28,26 @@ public class showMenuActivity extends AppCompatActivity {
         ListViewController();
 
     }   //  onCreate
+
+    public void clickConfirmOrder(View view) {
+
+        SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
+                MODE_PRIVATE, null);
+        Cursor objCursor = objSqLiteDatabase.rawQuery("SELECT * FROM " + ManageTABLE.TABLE_ORDER,null);
+
+        if (objCursor.getCount() > 0) {
+
+            //Have Data
+            //Intent objIntent  = new Intent(showMenuActivity)
+
+        } else {
+
+            //No Data
+            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+            objMyAlertDialog.errorDialog(showMenuActivity.this,"กรุณา Order","กรุณาสั่งอาหารก่อนครับ");
+        }
+
+    }   // clickConfirmOrder
 
     private void ListViewController() {
 
