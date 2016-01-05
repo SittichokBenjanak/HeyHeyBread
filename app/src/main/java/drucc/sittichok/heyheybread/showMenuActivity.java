@@ -2,6 +2,7 @@ package drucc.sittichok.heyheybread;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -110,13 +111,42 @@ public class showMenuActivity extends AppCompatActivity {
         Date clickDate = new Date();
         String strDate = myDateFormat.format(clickDate);
 
+        try {
+            ManageTABLE objManageTABLE = new ManageTABLE(this);
+            String[] myResultStrings = objManageTABLE.SearchBread(strbread);
+            int oldItem = Integer.parseInt(myResultStrings[2]); //โยนไอเทมมา
+            int newItem = Integer.parseInt(strItem) + oldItem;
+            String strNewItem = Integer.toString(newItem);
+
+            SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
+                    MODE_PRIVATE,null);
+            objSqLiteDatabase.delete(ManageTABLE.TABLE_ORDER,
+                    ManageTABLE.COLUMN_id + "=" + Integer.parseInt(myResultStrings[0]),null );
+
+            addOrderToMySQLite(strName,strDate,strSurname,strAddress,strPhone,strbread,strPrice, strNewItem);
+
+
+        } catch (Exception e) {
+            addOrderToMySQLite(strName,strDate,strSurname,strAddress,
+                    strPhone,strbread,strPrice,strItem);
+        }
+
+    }   // addValueToSQLite
+
+    private void addOrderToMySQLite(String strName,
+                                    String strDate,
+                                    String strSurname,
+                                    String strAddress,
+                                    String strPhone,
+                                    String strbread,
+                                    String strPrice,
+                                    String strItem) {
         ManageTABLE objManageTABLE = new ManageTABLE(this);
         objManageTABLE.addNewOrder(strName, strDate, strSurname,
                 strAddress, strPhone, strbread, strPrice, strItem);
 
         Toast.makeText(showMenuActivity.this, "Add Order to SQLite Finish",Toast.LENGTH_SHORT ).show();
-
-    }   // addValueToSQLite
+    }
 
 
 }   // Main Class
