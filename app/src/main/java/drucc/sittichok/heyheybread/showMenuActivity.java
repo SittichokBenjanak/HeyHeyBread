@@ -38,7 +38,8 @@ public class showMenuActivity extends AppCompatActivity {
         if (objCursor.getCount() > 0) {
 
             //Have Data
-            //Intent objIntent  = new Intent(showMenuActivity)
+            Intent objIntent = new Intent(showMenuActivity.this, ConfirmOrderActivity.class);
+            startActivity(objIntent);
 
         } else {
 
