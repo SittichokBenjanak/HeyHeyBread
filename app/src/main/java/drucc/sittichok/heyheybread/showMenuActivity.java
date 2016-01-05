@@ -58,7 +58,7 @@ public class showMenuActivity extends AppCompatActivity {
         objBuilder.setSingleChoiceItems(mySequences, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                int intItem = i + 1;
+                int intItem = i +1;
                 UpdateOrderToSQLit(breadString, priceString, intItem);
 
                 dialogInterface.dismiss();
@@ -75,7 +75,7 @@ public class showMenuActivity extends AppCompatActivity {
         String strID = getIntent().getStringExtra("ID");
         int intID = Integer.parseInt(strID);  //  parseInt(strID) ถ้าโยน อักษร 5 มา จะเป็น เลข 5
         ManageTABLE objManageTABLE = new ManageTABLE(this);
-        String[] resultStrings = objManageTABLE.readAtPosition(intID);
+        String[] resultStrings = objManageTABLE.readAtPosition(intID -1);
 
         addValueToSQLite(resultStrings[1],
                 resultStrings[2],
