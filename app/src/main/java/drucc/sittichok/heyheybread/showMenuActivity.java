@@ -8,6 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class showMenuActivity extends AppCompatActivity {
 
@@ -99,6 +104,17 @@ public class showMenuActivity extends AppCompatActivity {
         Log.d("hey", "Bread " +strbread);
         Log.d("hey", "Price " +strPrice);
         Log.d("hey", "Item " +strItem);
+
+        //update to SQLite
+        DateFormat myDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date clickDate = new Date();
+        String strDate = myDateFormat.format(clickDate);
+
+        ManageTABLE objManageTABLE = new ManageTABLE(this);
+        objManageTABLE.addNewOrder(strName, strDate, strSurname,
+                strAddress, strPhone, strbread, strPrice, strItem);
+
+        Toast.makeText(showMenuActivity.this, "Add Order to SQLite Finish",Toast.LENGTH_SHORT ).show();
 
     }   // addValueToSQLite
 
