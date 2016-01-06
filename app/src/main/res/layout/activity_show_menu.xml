@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="drucc.sittichok.heyheybread.showMenuActivity"
-    android:background="@drawable/wall11">
+    android:background="@drawable/bg_menu">
 
     <ListView
         android:layout_width="wrap_content"
