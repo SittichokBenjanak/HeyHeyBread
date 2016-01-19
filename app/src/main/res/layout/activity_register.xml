@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="drucc.sittichok.heyheybread.RegisterActivity"
-    android:background="@drawable/bg_menu">
+    android:background="@drawable/menubg1">
 
     <LinearLayout
         android:orientation="vertical"
