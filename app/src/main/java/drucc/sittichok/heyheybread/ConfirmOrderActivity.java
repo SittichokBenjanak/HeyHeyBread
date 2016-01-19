@@ -37,7 +37,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         nameTextView.setText(nameString + " " + surnameString);
         addressTextView.setText("ที่อยู่ " + addressString);
         phoneTextView.setText("เบอร์โทร " + phoneString );
-    }
+    }   // showView
 
     private void readAllData() {
 
