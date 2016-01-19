@@ -29,7 +29,6 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         //Show View
         showView();
 
-
     }   // Main Method
 
     private void showView() {
@@ -51,9 +50,34 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         addressString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Address));
         phoneString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Phone));
 
+        String[] nameOrderStrings = new String[objCursor.getCount()];
+        String[] priceStrings = new String[objCursor.getCount()];
+        String[] itemStrings = new String[objCursor.getCount()];
+        String[] noStrings = new String[objCursor.getCount()];
+        String[] amountStrings = new String[objCursor.getCount()];
+
+
+
+        for (int i=0; i<objCursor.getCount();i++) {
+
+            nameOrderStrings[i] = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Bread));
+            priceStrings[i] = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Price));
+            itemStrings[i] = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Item));
+            noStrings[i] = Integer.toString(i + 1);
+            amountStrings[i] = Integer.toString( Integer.parseInt(itemStrings[i])* Integer.parseInt(priceStrings[i]) );
+
+
+            objCursor.moveToNext();
+        }   // for
 
 
         objCursor.close();
+
+        // Create Listview
+        MyOrderAdapter objMyOrderAdapter = new MyOrderAdapter(ConfirmOrderActivity.this,
+                noStrings, nameOrderStrings, itemStrings, priceStrings, amountStrings);
+        orderListView.setAdapter(objMyOrderAdapter);
+
     }   // readAllData
 
     private void bindWidget() {
