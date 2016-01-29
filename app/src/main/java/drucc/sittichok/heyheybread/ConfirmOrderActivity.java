@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -106,13 +107,16 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
     private void myDeleteOrder(int position) {
 
-        SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
+        final SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
                 MODE_PRIVATE, null);
         Cursor objCursor = objSqLiteDatabase.rawQuery("SELECT * FROM " + ManageTABLE.TABLE_ORDER, null);
         objCursor.moveToFirst();
         objCursor.moveToPosition(position);
         String strBread = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Bread));
         String strItem = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Item));
+        final String strID = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_id));
+        Log.d("Hay", "ID ==> " + strID);
+
 
         AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
         objBuilder.setIcon(R.drawable.icon_myaccount);
@@ -122,6 +126,13 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         objBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                int intID = Integer.parseInt(strID);
+                objSqLiteDatabase.delete(ManageTABLE.TABLE_ORDER,
+                        ManageTABLE.COLUMN_id + "=" + intID, null );
+                totalAnInt = 0;
+                readAllData();
+                totalTextView.setText(Integer.toString(totalAnInt));
+
                 dialogInterface.dismiss();
             }
         });
