@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="clickConfirmOrder"
-        android:text="Confirm Order"
+        android:text="Order Bread"
         android:id="@+id/button5"
         android:layout_alignParentBottom="true" />
 </RelativeLayout>

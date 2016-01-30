@@ -168,7 +168,7 @@ public class showMenuActivity extends AppCompatActivity {
         objManageTABLE.addNewOrder(strName, strDate, strSurname,
                 strAddress, strPhone, strbread, strPrice, strItem);
 
-        Toast.makeText(showMenuActivity.this, "Add Order to SQLite Finish",Toast.LENGTH_SHORT ).show();
+        Toast.makeText(showMenuActivity.this, "เพิ่มสินค้าสำเร็จ",Toast.LENGTH_SHORT ).show();
     }
 
 
