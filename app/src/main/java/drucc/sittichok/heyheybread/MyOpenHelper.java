@@ -40,6 +40,17 @@ public class MyOpenHelper extends SQLiteOpenHelper{
             "Price text," +
             "Item text)";
 
+    private static final String CREATE_TABLE_ORDER_FINISH = "create table orderTABLE_FINISH (" +
+            "_id integer primary key," +
+            "Date text," +
+            "Name text," +
+            "Surname text," +
+            "Address text," +
+            "Phone text," +
+            "Bread text," +
+            "Price text," +
+            "Item text)";
+
     public MyOpenHelper(Context context) {
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
 
@@ -51,6 +62,7 @@ public class MyOpenHelper extends SQLiteOpenHelper{
         db.execSQL(CREATE_TABLE_USER);
         db.execSQL(CREATE_TABLE_BREAD);
         db.execSQL(CREATE_TABLE_ORDER);
+        db.execSQL(CREATE_TABLE_ORDER_FINISH);
 
     }
 

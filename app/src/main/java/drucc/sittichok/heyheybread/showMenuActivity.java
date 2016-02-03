@@ -170,7 +170,7 @@ public class showMenuActivity extends AppCompatActivity {
                                     String strItem) {
         ManageTABLE objManageTABLE = new ManageTABLE(this);
         objManageTABLE.addNewOrder(strName, strDate, strSurname,
-                strAddress, strPhone, strbread, strPrice, strItem);
+                strAddress, strPhone, strbread, strPrice, strItem ,0);
 
         Toast.makeText(showMenuActivity.this, "เพิ่มสินค้าสำเร็จ",Toast.LENGTH_SHORT ).show();
     }

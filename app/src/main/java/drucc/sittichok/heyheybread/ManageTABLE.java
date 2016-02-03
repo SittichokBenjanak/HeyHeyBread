@@ -34,6 +34,8 @@ public class ManageTABLE {
     public static final String COLUMN_Date = "Date";
     public static final String COLUMN_Item = "Item";
 
+    public static final String TABLE_ORDER_FINISH = "orderTABLE_FINISH";
+
     public ManageTABLE(Context context) {
 
         //Create & Connected
@@ -171,7 +173,9 @@ public class ManageTABLE {
                             String strPhone,
                             String strBread,
                             String strPrice,
-                            String strItem) {
+                            String strItem,
+                            int intTABLE) {
+
         ContentValues objContentValues = new ContentValues();
         //ContentValues คือ obj ที่ใช้ในการเชื่อมต่อฐานข้อมูล มันคือตัวกลาง
         objContentValues.put(COLUMN_Name,strName);
