@@ -2,6 +2,7 @@ package drucc.sittichok.heyheybread;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.StrictMode;
@@ -106,6 +107,13 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
         }   // for
         objCursor.close();
+
+        // Intent HubActivity
+        Intent objIntent = new Intent(ConfirmOrderActivity.this, HubActivity.class);
+        String strID = getIntent().getStringExtra("idUser");
+        objIntent.putExtra("ID", strID);
+        startActivity(objIntent);
+
 
     }   // clickFinish
 

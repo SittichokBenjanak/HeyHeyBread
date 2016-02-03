@@ -19,6 +19,9 @@ import java.util.Date;
 
 public class showMenuActivity extends AppCompatActivity {
 
+    // Explicit
+    private String strID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,7 @@ public class showMenuActivity extends AppCompatActivity {
 
             //Have Data
             Intent objIntent = new Intent(showMenuActivity.this, ConfirmOrderActivity.class);
+            objIntent.putExtra("idUser", strID);
             startActivity(objIntent);
 
         } else {
@@ -101,7 +105,7 @@ public class showMenuActivity extends AppCompatActivity {
 
     private void UpdateOrderToSQLit(String breadString, String priceString, int intItem) {
 
-        String strID = getIntent().getStringExtra("ID");
+        strID = getIntent().getStringExtra("ID");
         int intID = Integer.parseInt(strID);  //  parseInt(strID) ถ้าโยน อักษร 5 มา จะเป็น เลข 5
         ManageTABLE objManageTABLE = new ManageTABLE(this);
         String[] resultStrings = objManageTABLE.readAtPosition(intID -1);
