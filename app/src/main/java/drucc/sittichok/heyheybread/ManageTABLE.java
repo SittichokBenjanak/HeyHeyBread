@@ -13,7 +13,7 @@ public class ManageTABLE {
     //Explicit
     private MyOpenHelper objMyOpenHelper;
     private SQLiteDatabase writeSqLiteDatabase, readSqLiteDatabase;
-
+    // static ค่าคงที่ final ที่ไม่สามารถเปลี่ยนแปลงได้
     public static final String TABLE_USER = "userTABLE";
     public static final String COLUMN_id = "_id";
     public static final String COLUMN_User = "User";
