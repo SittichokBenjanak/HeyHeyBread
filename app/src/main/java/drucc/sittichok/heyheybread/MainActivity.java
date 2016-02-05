@@ -113,12 +113,13 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(myPolicy);
 
         int intTimes = 1;
-        while (intTimes <= 2) {
+        while (intTimes <= 3) {
 
             InputStream objInputStream = null;
             String strJSON = null;
             String strURLuser = "http://swiftcodingthai.com/mos/php_get_user_mos.php";
             String strURLbread = "http://swiftcodingthai.com/mos/php_get_bread_mos.php";
+            String strURLorder = "http://swiftcodingthai.com/mos/php_get_order_mos.php";
 
             HttpPost objHttpPost = null;
 
@@ -136,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         objHttpPost = new HttpPost(strURLbread);
 
+                        break;
+                    case 3:
+                        objHttpPost = new HttpPost(strURLorder);
                         break;
 
                 }   // switch
@@ -183,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (intTimes) {
 
-                        case 1:
+                        case 1: // userTABLE
 
                             String strUser = object.getString(ManageTABLE.COLUMN_User);
                             String strPassword = object.getString(ManageTABLE.COLUMN_Password);
@@ -197,13 +201,31 @@ public class MainActivity extends AppCompatActivity {
                                     strAddress, strPhone, strComplacency);
 
                             break;
-                        case 2:
+                        case 2: // breadTABLE
                             String strBread = object.getString(ManageTABLE.COLUMN_Bread);
                             String strPrice = object.getString(ManageTABLE.COLUMN_Price);
                             String strAmount = object.getString(ManageTABLE.COLUMN_Amount);
                             String strImage = object.getString(ManageTABLE.COLUMN_Image);
 
                             objManageTABLE.addNewBread(strBread, strPrice, strAmount, strImage);
+
+                            break;
+                        case 3: // orderTABLE
+
+                            String stridReceive = object.getString(ManageTABLE.COLUMN_idReceive);
+                            String strName1 = object.getString(ManageTABLE.COLUMN_Name);
+                            String strDate = object.getString(ManageTABLE.COLUMN_Date);
+                            String strSurname1 = object.getString(ManageTABLE.COLUMN_Surname);
+                            String strAddress1 = object.getString(ManageTABLE.COLUMN_Address);
+                            String strPhone1 = object.getString(ManageTABLE.COLUMN_Phone);
+                            String strBread1 = object.getString(ManageTABLE.COLUMN_Bread);
+                            String strPrice1 = object.getString(ManageTABLE.COLUMN_Price);
+                            String strItem1 = object.getString(ManageTABLE.COLUMN_Item);
+
+                            objManageTABLE.addNewOrderFinish(stridReceive, strName1, strDate, strSurname1,
+                                   strAddress1, strPhone1, strBread1, strPrice1, strItem1);
+
+
 
                             break;
 
@@ -235,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
         objSqLiteDatabase.delete(ManageTABLE.TABLE_USER, null, null);
         objSqLiteDatabase.delete(ManageTABLE.TABLE_BREAD, null, null);
         objSqLiteDatabase.delete(ManageTABLE.TABLE_ORDER, null, null);
+        objSqLiteDatabase.delete(ManageTABLE.TABLE_ORDER_FINISH, null, null);
     }
 
     private void testAddValue() {
@@ -242,6 +265,6 @@ public class MainActivity extends AppCompatActivity {
                 "testSurname", "testAddress", "testPhone", "testCom");
         objManageTABLE.addNewBread("testBread", "testPrice", "testAmount", "testImage");
         objManageTABLE.addNewOrder("testName","testDate", "testSurname", "testAddress",
-                "testPhone", "testBread", "testPrice", "testItem", 0);
+                "testPhone", "testBread", "testPrice", "testItem");
     }
 }   // Main class

@@ -33,6 +33,7 @@ public class ManageTABLE {
     public static final String TABLE_ORDER = "orderTABLE";
     public static final String COLUMN_Date = "Date";
     public static final String COLUMN_Item = "Item";
+    public static final String COLUMN_idReceive = "idReceive";
 
     public static final String TABLE_ORDER_FINISH = "orderTABLE_FINISH";
 
@@ -166,6 +167,34 @@ public class ManageTABLE {
         //return new String[0];
     }
 
+    public long addNewOrderFinish(String stridReceive,
+                                  String strName,
+                                  String strDate,
+                                  String strSurname,
+                                  String strAddress,
+                                  String strPhone,
+                                  String strBread,
+                                  String strPrice,
+                                  String strItem
+                            ) {
+
+        ContentValues objContentValues = new ContentValues();
+        //ContentValues คือ obj ที่ใช้ในการเชื่อมต่อฐานข้อมูล มันคือตัวกลาง
+
+        objContentValues.put(COLUMN_idReceive, stridReceive);
+        objContentValues.put(COLUMN_Name,strName);
+        objContentValues.put(COLUMN_Date,strDate);
+        objContentValues.put(COLUMN_Surname,strSurname);
+        objContentValues.put(COLUMN_Address,strAddress);
+        objContentValues.put(COLUMN_Phone,strPhone);
+        objContentValues.put(COLUMN_Bread,strBread);
+        objContentValues.put(COLUMN_Price,strPrice);
+        objContentValues.put(COLUMN_Item,strItem);
+
+        return writeSqLiteDatabase.insert(TABLE_ORDER_FINISH,null,objContentValues);
+    }   // addNewOrder
+
+
     public long addNewOrder(String strName,
                             String strDate,
                             String strSurname,
@@ -173,8 +202,8 @@ public class ManageTABLE {
                             String strPhone,
                             String strBread,
                             String strPrice,
-                            String strItem,
-                            int intTABLE) {
+                            String strItem
+                            ) {
 
         ContentValues objContentValues = new ContentValues();
         //ContentValues คือ obj ที่ใช้ในการเชื่อมต่อฐานข้อมูล มันคือตัวกลาง
