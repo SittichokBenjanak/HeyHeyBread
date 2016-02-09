@@ -39,16 +39,16 @@ public class ConfirmOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_order);
 
-        // Bind Widget
+        // Bind Widget  กำหนตตำแหน่งในรายการสั่งซื้อ
         bindWidget();
 
-        // Read All Data
+        // Read All Data  นำค่าที่ลูกค้าสั่งมาแสดง และ ส่งค่า ชื่อ นามสกุล ที่ อยู่ เบอร์ โทร ของ ลูกค้า และรายการที่สั่ง
         readAllData();
 
         // Find ID receive
         findIDreceive();
 
-        //Show View
+        //Show View   โชว์ ชื่อ นามสกุล ที่ อยู่ เบอร์โทร ราคารวม
         showView();
 
     }   // Main Method
@@ -74,20 +74,20 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
 
         //Read All orderTABLE
-        SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
+        SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME, // เปิดฐานข้อมูล
                 MODE_PRIVATE, null);
-        Cursor objCursor = objSqLiteDatabase.rawQuery("SELECT * FROM " + ManageTABLE.TABLE_ORDER, null);
-        objCursor.moveToFirst();
-        for (int i =0; i<objCursor.getCount();i++) {
+        Cursor objCursor = objSqLiteDatabase.rawQuery("SELECT * FROM " + ManageTABLE.TABLE_ORDER, null);  // เลือกOrder ทั้งหมด
+        objCursor.moveToFirst();  // ให้เลือกตำแหน่ง ของข้อมูล Order อยู่บนสุด
+        for (int i =0; i<objCursor.getCount();i++) {    // นำOrder มานับแถว ถ้ามีข้อมูล ให้ทำ
 
-            String strDate = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Date));
-            String strName = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Name));
-            String strSurname = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Surname));
-            String strAddress = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Address));
-            String strPhone = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Phone));
-            String strBread = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Bread));
-            String strPrice = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Price));
-            String strItem = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Item));
+            String strDate = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Date));  // รับค่า เวลา
+            String strName = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Name)); // รับค่า ชื่อ
+            String strSurname = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Surname)); // รับค่านามสกุล
+            String strAddress = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Address)); // รับค่าที่อยู๋
+            String strPhone = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Phone)); // รับค่าเบอร์โทร
+            String strBread = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Bread)); // รับค่าชื่อขนมปัง
+            String strPrice = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Price)); // รับค่าราคา
+            String strItem = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Item)); // รับค่าไอเทม
 
             // Update to mySQL
             StrictMode.ThreadPolicy myPolicy = new StrictMode.ThreadPolicy
@@ -107,14 +107,14 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                 objNameValuePairs.add(new BasicNameValuePair(ManageTABLE.COLUMN_Price, strPrice));
                 objNameValuePairs.add(new BasicNameValuePair(ManageTABLE.COLUMN_Item, strItem));
 
-                HttpClient objHttpClient = new DefaultHttpClient();
-                HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/mos/php_add_order_mos.php");
+                HttpClient objHttpClient = new DefaultHttpClient(); // เปิดโปรโตคอล
+                HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/mos/php_add_order_mos.php"); // ลิ้งไปที่ไฟล์นี้
                 objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8"));
                 objHttpClient.execute(objHttpPost);
 
                 if (i == (objCursor.getCount() - 1) ) {
 
-                    Toast.makeText(ConfirmOrderActivity.this,"Update Order Finish",
+                    Toast.makeText(ConfirmOrderActivity.this,"ยืนยันสำเร็จ", // โชว์ข้อความการยืนยัน 3.5 วินาที
                             Toast.LENGTH_SHORT).show();
                 }   // if
 
@@ -123,15 +123,16 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                 Log.d("hey", "Error Cannot Update to mySQL ==> " + e.toString());
             }
 
-            objCursor.moveToNext();
+            objCursor.moveToNext(); // ทำต่อ
 
         }   // for
-        objCursor.close();
+        objCursor.close(); // คืนหน่วยความจำ
 
         // Intent HubActivity
         Intent objIntent = new Intent(ConfirmOrderActivity.this, HubActivity.class);
+                                // ทำเสร็จแล้ว ให้ กลับไปหน้า HubActivity.class
         String strID = getIntent().getStringExtra("idUser");
-        objIntent.putExtra("ID", strID);
+        objIntent.putExtra("ID", strID); //แล้วส่งค่า ID คืนไปที่หน้า HubActivity.class ด้วย
         startActivity(objIntent);
 
 
@@ -139,7 +140,9 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
 
     public void clickMore(View view) {
-        finish();
+
+        finish(); // ปิดหน้าต่าง แสดงรายการลง แล้ว จะไป โชว์ ที่หน้า สั่งซื้อสินค้า
+
     } // clickMore
 
     private void showView() {
@@ -153,35 +156,36 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     private void readAllData() {
 
         SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
-                MODE_PRIVATE, null);
-        Cursor objCursor = objSqLiteDatabase.rawQuery("SELECT * FROM orderTABLE", null);
-        objCursor.moveToFirst();
-        dateString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Date));
-        nameString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Name));
-        surnameString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Surname));
-        addressString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Address));
-        phoneString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Phone));
+                MODE_PRIVATE, null); // เปิดฐานข้อมูล Heyhey.db
+        Cursor objCursor = objSqLiteDatabase.rawQuery("SELECT * FROM orderTABLE", null); //ดึง Order ที่สั่งทั้งหมดจากฐานข้อมูล
+        objCursor.moveToFirst();  // แล้วให้ไปอยู่ที่ Order แรก
+        dateString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Date)); // รับค่า เวลา
+        nameString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Name)); // รับค่า ชื่อ
+        surnameString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Surname)); // รับค่า นามสกุล
+        addressString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Address)); // รับค่า ที่อยู่
+        phoneString = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Phone)); // รับค่าเบอร์โทร
 
-        String[] nameOrderStrings = new String[objCursor.getCount()];
-        String[] priceStrings = new String[objCursor.getCount()];
-        String[] itemStrings = new String[objCursor.getCount()];
-        String[] noStrings = new String[objCursor.getCount()];
-        String[] amountStrings = new String[objCursor.getCount()];
+        String[] nameOrderStrings = new String[objCursor.getCount()]; // นับจำนวนของ ชื่อสินค้า
+        String[] priceStrings = new String[objCursor.getCount()]; // นับจำนวนของ ราคาสินค้า
+        String[] itemStrings = new String[objCursor.getCount()]; // นับจำนวนของ จำนวนสินค้า
+        String[] noStrings = new String[objCursor.getCount()]; // นับจำนวนของ ลำดับไอเทม
+        String[] amountStrings = new String[objCursor.getCount()]; // นับจำนวน ราคารวม คือ item * price ได้ sum ผลรวม
 
 
 
         for (int i=0; i<objCursor.getCount();i++) {
 
-            nameOrderStrings[i] = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Bread));
-            priceStrings[i] = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Price));
-            itemStrings[i] = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Item));
-            noStrings[i] = Integer.toString(i + 1);
+            nameOrderStrings[i] = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Bread)); // รับค่าชื่อขนมปัง
+            priceStrings[i] = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Price)); // รับค่าราคา
+            itemStrings[i] = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_Item)); // รับค่าจำนวน
+            noStrings[i] = Integer.toString(i + 1); // +1 เพราะ ลำดับ เริ่มที่ 1 แล้ว บวก ไปเลื่อยๆ จนหมด เช่น 1 2 3 4
             amountStrings[i] = Integer.toString( Integer.parseInt(itemStrings[i])* Integer.parseInt(priceStrings[i]) );
+            // Sum ผลรวมของ item*price
 
-
-            objCursor.moveToNext();
+            objCursor.moveToNext(); // เช่น ทำลำดับที่ 1 เสร็จ แล้ว ทำลำดับที่ 2 ต่อ Next จนกว่าจะหมด
 
             totalAnInt = totalAnInt + Integer.parseInt(amountStrings[i]);
+            // ค่าผมรวมทั้งหมด total เอา amountStrings[i] ทั้งหมด มา+กัน
 
         }   // for
 
