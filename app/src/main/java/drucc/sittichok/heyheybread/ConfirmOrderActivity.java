@@ -250,13 +250,13 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
     private void bindWidget() {
 
-        dateTextView = (TextView) findViewById(R.id.textView19);
-        nameTextView = (TextView) findViewById(R.id.textView20);
-        addressTextView = (TextView) findViewById(R.id.textView21);
-        phoneTextView = (TextView) findViewById(R.id.textView22);
-        totalTextView = (TextView) findViewById(R.id.textView23);
-        orderListView = (ListView) findViewById(R.id.listView2);
-        idReceiveTextView = (TextView) findViewById(R.id.textView30);
+        dateTextView = (TextView) findViewById(R.id.textView19);  // ตำแหน่ง เวลา
+        nameTextView = (TextView) findViewById(R.id.textView20);  // ตำแหน่ง ชื่อ
+        addressTextView = (TextView) findViewById(R.id.textView21); // ตำแหน่งที่อยู่
+        phoneTextView = (TextView) findViewById(R.id.textView22); // ตำแหน่งเบอร์
+        totalTextView = (TextView) findViewById(R.id.textView23); // ตำแหน่งราคารวม
+        orderListView = (ListView) findViewById(R.id.listView2); // ตำแหน่งรายการสินค้าที่ลูกค้าสั่งซื้อ
+        idReceiveTextView = (TextView) findViewById(R.id.textView30); // ตำแหน่ง รหัสรายการสั่งซื้อ
 
     }   //bindWidget
 

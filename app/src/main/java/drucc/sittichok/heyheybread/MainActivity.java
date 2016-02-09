@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         bindWidget();
 
 
-        //Connected Database
+        //Connected Database ทำให้สามารถเรียกใช้ เมดตอด ที่ อยู่ ใน ManageTABLE ได้
         objManageTABLE = new ManageTABLE(this);
 
 
@@ -62,11 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickLogin(View view) {
 
-        // Check Space
-        userString = userEditText.getText().toString().trim();
+        // Check Space เช็คว่า ถ้า ช่องที่กรอกข้อมูล อันใด อันหนึ่งว่าง ให้ โชว์ ข้อความ  "มีช่องว่าง","กรุณากรอกให้ครบ" ที่หน้า MainActivity.this
+        userString = userEditText.getText().toString().trim(); // รับค่าเป็น text แปลงเป็น String ,trim ตัดช่องว่าง
         passwordString = passwordEditText.getText().toString().trim();
 
-        if (userString.equals("") || passwordString.equals("")) {
+        if (userString.equals("") || passwordString.equals("")) {  //อีคั่ว
             //Have Space
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
             objMyAlertDialog.errorDialog(MainActivity.this,"มีช่องว่าง","กรุณากรอกให้ครบ");
@@ -84,8 +84,9 @@ public class MainActivity extends AppCompatActivity {
 
         try {
 
-            String[] resultStrings = objManageTABLE.searchUser(userString);
+            String[] resultStrings = objManageTABLE.searchUser(userString);  //userString คือ ค่าที่รับมาจากลูกค้ากรอก
             if (passwordString.equals(resultStrings[2])) {
+                // equals คือ = เปรียบเทียบ PasswordString ที่ลูกค้ากรอกมา ถ้า ตรงกับ Pass ที่อยู่ในฐานข้อมูล
 
                 Intent objIntent = new Intent(MainActivity.this, HubActivity.class);
                 objIntent.putExtra("ID", resultStrings[0]);
