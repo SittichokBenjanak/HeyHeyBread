@@ -114,7 +114,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
                 if (i == (objCursor.getCount() - 1) ) {
 
-                    Toast.makeText(ConfirmOrderActivity.this,"Confirm Success", // โชว์ข้อความการยืนยัน 3.5 วินาที
+                    Toast.makeText(ConfirmOrderActivity.this,"Confirm success", // โชว์ข้อความการยืนยัน 3.5 วินาที
                             Toast.LENGTH_SHORT).show();
                 }   // if
 
@@ -146,10 +146,10 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     } // clickMore
 
     private void showView() {
-        dateTextView.setText("วันที่ " + dateString);
+        dateTextView.setText("Date " + dateString);
         nameTextView.setText(nameString + " " + surnameString);
-        addressTextView.setText("ที่อยู่ " + addressString);
-        phoneTextView.setText("เบอร์โทร " + phoneString );
+        addressTextView.setText("Address " + addressString);
+        phoneTextView.setText("Phone " + phoneString );
         totalTextView.setText(Integer.toString(totalAnInt));
     }   // showView
 
@@ -224,8 +224,8 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
         AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
         objBuilder.setIcon(R.drawable.icon_myaccount);
-        objBuilder.setTitle("Are You Sure ? ");
-        objBuilder.setMessage("Delete Order " + strBread +" " +strItem + "ชิ้น");
+        objBuilder.setTitle("Are you sure ? ");
+        objBuilder.setMessage("Delete order " + strBread +" " +strItem + "ชิ้น");
         objBuilder.setCancelable(false);
         objBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

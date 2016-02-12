@@ -16,7 +16,7 @@ public class MyAlertDialog {
         objBuilder.setTitle(strTitle);
         objBuilder.setMessage(strMessage);
         objBuilder.setCancelable(false);  // Cancelable(false) คือ เวลา AlertDialog ให้กด Ok เท่านั้น กดกลับไม่ได้
-        objBuilder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
+        objBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

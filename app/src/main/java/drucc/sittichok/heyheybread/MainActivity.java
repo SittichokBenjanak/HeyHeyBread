@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         if (userString.equals("") || passwordString.equals("")) {  //อีคั่ว
             //Have Space
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
-            objMyAlertDialog.errorDialog(MainActivity.this,"มีช่องว่าง","กรุณากรอกให้ครบ");
+            objMyAlertDialog.errorDialog(MainActivity.this,"Please check space","กรุณากรอกข้อมูลให้ครบ");
 
         } else {
             //No Space
