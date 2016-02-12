@@ -83,7 +83,7 @@ public class HubActivity extends AppCompatActivity implements View.OnClickListen
             startActivity(objIntent);
         } else {
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
-            objMyAlertDialog.errorDialog(HubActivity.this,"กรุณา Order","กรุณาสั่งอาหารก่อนครับ");
+            objMyAlertDialog.errorDialog(HubActivity.this,"Please Order","กรุณาสั่งสินค้าก่อนครับ");
         }
 
     }

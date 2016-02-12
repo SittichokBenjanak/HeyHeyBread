@@ -49,7 +49,7 @@ public class showMenuActivity extends AppCompatActivity {
 
             //No Data ไม่มีข้อมูล
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
-            objMyAlertDialog.errorDialog(showMenuActivity.this,"กรุณา Order","กรุณาสั่งอาหารก่อนครับ");
+            objMyAlertDialog.errorDialog(showMenuActivity.this,"\n" + "Please Order","กรุณาสั่งสินค้าก่อนครับ");
             // แสดงกล่องข้อความว่า "กรุณา Order","กรุณาสั่งอาหารก่อนครับ"
         }
 
@@ -174,7 +174,7 @@ public class showMenuActivity extends AppCompatActivity {
         objManageTABLE.addNewOrder(strName, strDate, strSurname,
                 strAddress, strPhone, strbread, strPrice, strItem );
 
-        Toast.makeText(showMenuActivity.this, "เพิ่มสินค้าสำเร็จ",Toast.LENGTH_SHORT ).show();
+        Toast.makeText(showMenuActivity.this, "Add Success",Toast.LENGTH_SHORT ).show();
         // โขว์ข้อความ "เพิ่มสินค้าสำเร็จ" แล้วหายไปภายใน 3.5 วิ
     }
 

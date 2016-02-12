@@ -114,7 +114,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
                 if (i == (objCursor.getCount() - 1) ) {
 
-                    Toast.makeText(ConfirmOrderActivity.this,"ยืนยันสำเร็จ", // โชว์ข้อความการยืนยัน 3.5 วินาที
+                    Toast.makeText(ConfirmOrderActivity.this,"Confirm Success", // โชว์ข้อความการยืนยัน 3.5 วินาที
                             Toast.LENGTH_SHORT).show();
                 }   // if
 

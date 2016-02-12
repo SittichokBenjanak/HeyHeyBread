@@ -45,16 +45,16 @@ public class RegisterActivity extends AppCompatActivity {
         userString = UserEditText.getText().toString().trim();
         if (userString.equals("")) {  // ถ้า userString = "" ว่าง  ให้ โชว์ ว่า "User ว่าง","กรุณากรอกที่ช่อง User ด้วย"
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
-            objMyAlertDialog.errorDialog(RegisterActivity.this,"User ว่าง","กรุณากรอกที่ช่อง User ด้วย");
+            objMyAlertDialog.errorDialog(RegisterActivity.this,"User Space","กรุณากรอกที่ช่อง User ด้วย");
         } else {
                 //ถ้าไม่ว่าง ให้โชว์
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
             if (checkUser()) {
-                objMyAlertDialog.errorDialog(RegisterActivity.this, "ไม่สามารถใช้ชื่อนี้ได้","กรุณาเปลี่ยน User ใหม่ มีใครอื่นใช้แล้ว");
+                objMyAlertDialog.errorDialog(RegisterActivity.this, "Do Not Use This User","กรุณาเปลี่ยน User ใหม่ มีใครอื่นใช้แล้ว");
 
             } else {
 
-                objMyAlertDialog.errorDialog(RegisterActivity.this,"สามารถใช้ชื่อนี้ได้","กรอกให้ครบทุกช่องแล้ว Save เลย ");
+                objMyAlertDialog.errorDialog(RegisterActivity.this,"You Can Use This User","สามารถใช้ User นี้ได้ ");
 
             }
 
@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             //Have Space  ถ้ามีช่องว่างให้ทำ
             MyAlertDialog objMyAlertDialog = new MyAlertDialog();
-            objMyAlertDialog.errorDialog(RegisterActivity.this, "มีช่องว่าง", "กรุณากรอกให้ครบทุกช่อง");
+            objMyAlertDialog.errorDialog(RegisterActivity.this, "Please Fill In The Full", "กรุณากรอกให้ครบทุกช่อง");
 
         } else {
 
@@ -111,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (checkUser()) {
 
                 MyAlertDialog objMyAlertDialog = new MyAlertDialog();
-                objMyAlertDialog.errorDialog(RegisterActivity.this,"ไม่สามารถใช้ชื่อนี้ได้","กรุณาเปลี่ยน User ใหม่ มีใครอื่นใช้แล้ว");
+                objMyAlertDialog.errorDialog(RegisterActivity.this,"Do Not Use This User","กรุณาเปลี่ยน User ใหม่ มีใครอื่นใช้แล้ว");
 
             } else {
 
@@ -127,14 +127,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         AlertDialog.Builder objBuilder = new AlertDialog.Builder(this);
         objBuilder.setIcon(R.drawable.icon_myaccount);  // ตั้งค่า รูป
-        objBuilder.setTitle("โปรตรวจสอบข้อมูล");  // หัวข้อ
+        objBuilder.setTitle("Please Check Your Data");  // หัวข้อ
         objBuilder.setMessage("User = " + userString + "\n" +  // ข้อความที่จะโชว์ ทั้ง หมด รับค่าจากที่ ลูกค้ากรอกมา
                 "Password = " + passwordString + "\n" +
                 "Name = " + nameString + "\n" +
                 "Surname = " + surnameString + "\n" +
                 "Address = " + addressString + "\n" +
                 "Phone = " + phoneString + "\n");
-        objBuilder.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {  // ถ้ากดตกลง ให้อัฟเดทเข้าฐานข้อมูล
+        objBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {  // ถ้ากดตกลง ให้อัฟเดทเข้าฐานข้อมูล
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -142,7 +142,7 @@ public class RegisterActivity extends AppCompatActivity {
                 dialog.dismiss();  // dialog.dismiss ให้ dialog หายไป
             }
         });
-        objBuilder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {  // ถ้ายกเลิก ให้ปิดข้อความลงเฉยๆ อยู่หน้าเดิม
+        objBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {  // ถ้ายกเลิก ให้ปิดข้อความลงเฉยๆ อยู่หน้าเดิม
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();  // dialog.dismiss ให้ dialog หายไป
@@ -176,11 +176,11 @@ public class RegisterActivity extends AppCompatActivity {
             objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs,"UTF-8"));
             objHttpClient.execute(objHttpPost);
 
-            Toast.makeText(RegisterActivity.this, "บันทึกสำเร็จ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this, "Save Success", Toast.LENGTH_SHORT).show();
             // โชว์ ข้อความ ว่า บันทึกสำเร็จ แล้วหายไป 3.5วื
 
         } catch (Exception e) {
-            Toast.makeText(RegisterActivity.this,"บันทึกไม่สำเร็จ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(RegisterActivity.this,"\n" + "Save Failed", Toast.LENGTH_SHORT).show();
         }
 
 
