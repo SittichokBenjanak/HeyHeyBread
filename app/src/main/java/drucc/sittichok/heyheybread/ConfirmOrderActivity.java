@@ -146,11 +146,11 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     } // clickMore
 
     private void showView() {
-        dateTextView.setText("Date " + dateString);
-        nameTextView.setText(nameString + " " + surnameString);
-        addressTextView.setText("Address " + addressString);
-        phoneTextView.setText("Phone " + phoneString );
-        totalTextView.setText(Integer.toString(totalAnInt));
+        dateTextView.setText("Date : " + dateString);
+        nameTextView.setText("Name : " + nameString + " " + surnameString);
+        addressTextView.setText("Address : " + addressString);
+        phoneTextView.setText("Phone : " + phoneString );
+        totalTextView.setText(Integer.toString(totalAnInt) + "      Baht");
     }   // showView
 
     private void readAllData() {

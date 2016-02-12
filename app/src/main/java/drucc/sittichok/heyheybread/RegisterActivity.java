@@ -134,7 +134,7 @@ public class RegisterActivity extends AppCompatActivity {
                 "Surname = " + surnameString + "\n" +
                 "Address = " + addressString + "\n" +
                 "Phone = " + phoneString + "\n");
-        objBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {  // ถ้ากดตกลง ให้อัฟเดทเข้าฐานข้อมูล
+        objBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {  // ถ้ากดตกลง ให้อัฟเดทเข้าฐานข้อมูล
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
