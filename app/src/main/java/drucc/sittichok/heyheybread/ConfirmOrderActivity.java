@@ -35,6 +35,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
     private int totalAnInt = 0;
     private String strCurrentIDReceive;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,7 +133,23 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 Log.d("hey", "Error Cannot Update to mySQL ==> " + e.toString());
-            }
+            }   // end of TryCase 1
+
+
+            try {
+
+                //Find Id Bread
+                ManageTABLE objManageTABLE = new ManageTABLE(this);
+                String[] resultStrings = objManageTABLE.SearchBread(strBread);
+                Log.d("16Feb", "id bread " + strBread + " " + resultStrings[0]);
+
+
+            } catch (Exception e) {
+                Log.d("16Feb", "Cannot Delete Stock");
+
+            }// end of TryCase 2
+
+
 
             objCursor.moveToNext(); // ทำต่อ
 
