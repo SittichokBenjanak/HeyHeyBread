@@ -129,7 +129,7 @@ public class ManageTABLE {
         objCursor.close();
 
         return resultStrings;
-    }
+    }   // readAllBread
 
     public String[] searchUser(String strUser) {
 
@@ -165,7 +165,7 @@ public class ManageTABLE {
         }
 
         //return new String[0];
-    }
+    }   //searchUser
 
     public long addNewOrderFinish(String stridReceive,
                                   String strName,
@@ -175,8 +175,7 @@ public class ManageTABLE {
                                   String strPhone,
                                   String strBread,
                                   String strPrice,
-                                  String strItem
-                            ) {
+                                  String strItem) {
 
         ContentValues objContentValues = new ContentValues();
         //ContentValues คือ obj ที่ใช้ในการเชื่อมต่อฐานข้อมูล มันคือตัวกลาง

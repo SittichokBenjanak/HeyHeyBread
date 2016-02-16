@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     private void synJSONtoSQLite() {
 
         StrictMode.ThreadPolicy myPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(myPolicy);
+        StrictMode.setThreadPolicy(myPolicy);   //เปิดโปรโตรคอลให้แอพเชื่อมต่ออินเตอร์เน็ตได้ ใช้ได้ทั้งหมด โดยใช้คำสั่ง permitAll
 
         int intTimes = 1;
         while (intTimes <= 3) {

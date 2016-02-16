@@ -33,6 +33,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
             phoneString,totalString;
     private ListView orderListView;
     private int totalAnInt = 0;
+    private String strCurrentIDReceive;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,15 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
         String strIDreceive = objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_idReceive));
         Log.d("Receive", "Receive Last = " + strIDreceive);
+
+        String[] idReceiveStrings = strIDreceive.split("#");
+        int inttext = (Integer.parseInt(idReceiveStrings[1]) + 1);
+
+        Log.d("Receive", "text = " + inttext);
+
+        strCurrentIDReceive = idReceiveStrings[0] + "#" + (Integer.toString(inttext));
+        idReceiveTextView.setText(strCurrentIDReceive);
+
 
         objCursor.close();
 
@@ -98,6 +108,7 @@ public class ConfirmOrderActivity extends AppCompatActivity {
 
                 ArrayList<NameValuePair> objNameValuePairs = new ArrayList<NameValuePair>();
                 objNameValuePairs.add(new BasicNameValuePair("isAdd", "true"));
+                objNameValuePairs.add(new BasicNameValuePair("idReceive", strCurrentIDReceive));
                 objNameValuePairs.add(new BasicNameValuePair(ManageTABLE.COLUMN_Date, strDate));
                 objNameValuePairs.add(new BasicNameValuePair(ManageTABLE.COLUMN_Name, strName));
                 objNameValuePairs.add(new BasicNameValuePair(ManageTABLE.COLUMN_Surname, strSurname));
@@ -108,8 +119,8 @@ public class ConfirmOrderActivity extends AppCompatActivity {
                 objNameValuePairs.add(new BasicNameValuePair(ManageTABLE.COLUMN_Item, strItem));
 
                 HttpClient objHttpClient = new DefaultHttpClient(); // เปิดโปรโตคอล
-                HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/mos/php_add_order_mos.php"); // ลิ้งไปที่ไฟล์นี้
-                objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8"));
+                HttpPost objHttpPost = new HttpPost("http://swiftcodingthai.com/mos/php_add_order_master.php"); // ลิ้งไปที่ไฟล์นี้
+                objHttpPost.setEntity(new UrlEncodedFormEntity(objNameValuePairs, "UTF-8")); // ให้ลองรับ ภาษาไทย
                 objHttpClient.execute(objHttpPost);
 
                 if (i == (objCursor.getCount() - 1) ) {
